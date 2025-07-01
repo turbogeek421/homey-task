@@ -3,5 +3,5 @@ class Activity < ApplicationRecord
 
   belongs_to :project
   belongs_to :user
-  belongs_to :record, polymorphic: true
+  belongs_to :record, polymorphic: true, dependent: :destroy
 end

@@ -21,6 +21,6 @@ RSpec.describe Activity do
   describe "associations" do
     it { is_expected.to belong_to(:project) }
     it { is_expected.to belong_to(:user) }
-    it { is_expected.to belong_to(:record) }
+    it { is_expected.to belong_to(:record).dependent(:destroy) }
   end
 end
