@@ -74,4 +74,7 @@ group :test do
 
   # One-liners to test common Rails functionality
   gem "shoulda-matchers", "~> 6.5.0"
+
+  # Extracting `assigns` and `assert_template` from ActionDispatch.
+  gem "rails-controller-testing"
 end
