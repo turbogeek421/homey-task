@@ -1,0 +1,40 @@
+<div class="container">
+  <div>
+    <h2 style="padding-bottom: 2em;"><%= @project.title %></h2>
+    <h5 style="padding-bottom: 1em;">Activities</h5>
+    <% @activities.each do |a| %>
+      <dl style="padding-bottom: 2em;">
+        <dt><%= header_for_activity(a) %></dt>
+        <dd><%= display_for_activity(a) %></dd>
+        <dt>by <%= a.user.name %> (<%= a.created_at.to_fs(:long) %>)</dt>
+      </dl>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div style="padding-bottom: 2em;">
+    <%= form_with(model: [@project, Comment.build], local: true) do |form| %>
+      <div class="field">
+        <%= form.label :content, "Add a comment" %><br>
+        <%= form.text_area :content, rows: 3, placeholder: "Enter your comment here...", style: "width: 100%;" %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "Create Comment" %>
+      </div>
+    <% end %>
+  </div>
+  <div style="padding-bottom: 2em;">
+    <%= form_with(model: [@project, StatusChange.build], local: true) do |form| %>
+      <div class="field">
+        <%= form.label :to_status, "Update project status" %><br>
+        <%= form.select :to_status, options_for_select([['New', 'new'], ['Pending', 'pending'], ['Accepted', 'accepted'], ['In Progress', 'in_progress'], ['Completed', 'completed']]) %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "Update Status" %>
+      </div>
+    <% end %>
+  </div>
+</div>
