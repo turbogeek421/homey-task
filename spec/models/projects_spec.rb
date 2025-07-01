@@ -17,4 +17,8 @@ RSpec.describe Project do
       expect { project.save }.to change { project.id }.from(nil).to(anything)
     end
   end
+
+  describe "associations" do
+    it { is_expected.to have_many(:activities) }
+  end
 end

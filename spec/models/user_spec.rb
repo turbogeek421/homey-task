@@ -17,4 +17,8 @@ RSpec.describe User do
       expect { user.save }.to change { user.id }.from(nil).to(anything)
     end
   end
+
+  describe "associations" do
+    it { is_expected.to have_many(:activities) }
+  end
 end

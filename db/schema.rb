@@ -10,11 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_01_091204) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_01_095840) do
+  create_table "activities", id: :string, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "project_id"
+    t.string "user_id"
+    t.string "record_type"
+    t.string "record_id"
+    t.index ["project_id"], name: "index_activities_on_project_id"
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "comments", id: :string, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "content"
+  end
+
   create_table "projects", id: :string, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
+  end
+
+  create_table "status_changes", id: :string, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "from_status"
+    t.string "to_status"
   end
 
   create_table "users", id: :string, force: :cascade do |t|
