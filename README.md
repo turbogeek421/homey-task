@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A basic project conversation app that allows users to comment on a given project, change its status and have the history shown.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+[Development completed using Docker]
 
-* System dependencies
+From the repo root, run:
 
-* Configuration
+```
+docker compose build
+docker compose up -d
+docker compose exec app rails db:migrate db:seed
+```
 
-* Database creation
+## Access
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+From within a browser, http://localhost:3000/
