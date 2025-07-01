@@ -1,9 +1,11 @@
 class StatusChangesController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
-    @status_change = StatusChange.new(status_change_params.merge(from_status: "current status"))
+    new_status = status_change_params[:to_status]
+    @status_change = StatusChange.new(status_change_params.merge(from_status: @project.status))
 
     if @status_change.save
+      @project.update(status: new_status)
       Activity.create!(project: @project, user: User.first, record: @status_change)
       redirect_to @project, notice: "Status change was successfully created."
     else

@@ -21,4 +21,8 @@ RSpec.describe Project do
   describe "associations" do
     it { is_expected.to have_many(:activities) }
   end
+
+  describe "enums" do
+    it { is_expected.to define_enum_for(:status).with_values(pending: 0, accepted: 1, in_progress: 2, completed: 3) }
+  end
 end

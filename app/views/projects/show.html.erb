@@ -1,6 +1,6 @@
 <div class="container">
   <div>
-    <h2 style="padding-bottom: 2em;"><%= @project.title %></h2>
+    <h2 style="padding-bottom: 2em;"><%= @project.title %> [<%= @project.status.humanize %>]</h2>
     <h5 style="padding-bottom: 1em;">Activities</h5>
     <% @activities.each do |a| %>
       <dl style="padding-bottom: 2em;">
@@ -29,7 +29,7 @@
     <%= form_with(model: [@project, StatusChange.build], local: true) do |form| %>
       <div class="field">
         <%= form.label :to_status, "Update project status" %><br>
-        <%= form.select :to_status, options_for_select([['New', 'new'], ['Pending', 'pending'], ['Accepted', 'accepted'], ['In Progress', 'in_progress'], ['Completed', 'completed']]) %>
+        <%= form.select :to_status, options_for_select(Project.statuses.keys.map { |k| [k.humanize, k] }, @project.status) %>
       </div>
 
       <div class="actions">

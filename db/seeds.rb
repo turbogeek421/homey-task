@@ -10,6 +10,7 @@
 
 puts "Adding initial project..."
 project = Project.find_or_create_by(title: "My first project!")
+project.update(status: :pending)
 
 puts "Adding admin project..."
 user = User.find_or_create_by(name: "Admin")
