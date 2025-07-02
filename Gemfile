@@ -47,7 +47,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Creates fake (but reasonable) data that can be used during testing or development
-  gem "faker", "~> 3.5.1"
+  gem "faker", "~> 3.5.2"
 end
 
 group :development do
